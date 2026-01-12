@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meadowlark Rise Farm</title>
+  <meta name="description" content="Meadowlark Rise Farm is a family-run regenerative farm in Vankleek Hill, Ontario offering nursery stock preorders, pears & heartnuts, and on-farm consulting." />
+
+  <style>
+:root{
+  --eco:#8fb36a;        /* sage ring */
+  --bg:#fbfbf5;         /* warm cream */
+  --bg2:#f1f4ea;        /* soft paper */
+  --card:#ffffff;
+  --text:#2f332b;       /* charcoal */
+  --muted:#6b6f63;      /* field gray */
+  --border:rgba(60,70,50,.18);
+  --shadow:0 14px 40px rgba(40,45,35,.12);
+  --link:#6f8f4b;       /* leaf green */
+  --pill:#eef3e6;
+  --radius:18px;
+}
+
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;
+      background:linear-gradient(180deg, var(--bg), var(--bg2));
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:var(--link)}
+    .wrap{max-width:980px;margin:0 auto;padding:26px 18px 60px}
+
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:10px 0 14px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;min-width:260px}
+    .brand img{width:54px;height:54px;border-radius:14px;border:1px solid var(--border);background:#fff;object-fit:cover;box-shadow:var(--shadow)}
+    .brand .name{display:flex;flex-direction:column;gap:2px}
+    .brand strong{font-size:16px;letter-spacing:.2px}
+    .brand span{font-size:13px;color:var(--muted)}
+
+    .nav{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
+    .nav a{text-decoration:none;color:var(--muted);padding:6px 8px;border-radius:10px}
+    .nav a:hover{color:var(--text);background:rgba(47,196,111,.12)}
+
+    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:14px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      font-weight:700;
+      background:rgba(255,255,255,.75);
+      color:var(--text);
+    }
+    .btn:hover{background:#fff}
+    .btn.primary{background:rgba(47,196,111,.18);border-color:rgba(47,196,111,.60)}
+    .btn.primary:hover{background:rgba(47,196,111,.26)}
+    .btn.outlineGreen{border-color:rgba(47,196,111,.55);background:rgba(255,255,255,.75)}
+    .btn.outlineGreen:hover{background:rgba(47,196,111,.10)}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:16px}
+    .card{
+      grid-column:span 12;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:18px;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 6px 18px rgba(0,0,0,.05);
+    }
+    .card h2{margin:0 0 10px;font-size:20px}
+    .muted{color:var(--muted);margin:0}
+
+    .two{grid-column:span 12}
+    @media(min-width:820px){ .two{grid-column:span 6} }
+
+    .pillRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .pill{border:1px solid var(--border);background:var(--pill);padding:8px 10px;border-radius:999px;font-size:14px;color:var(--muted)}
+
+    .features{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:12px}
+    .feature{
+      grid-column:span 12;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+      background:#fff;
+      position:relative;
+      overflow:hidden;
+    }
+    @media(min-width:820px){ .feature{grid-column:span 4} }
+    .feature::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--eco);opacity:.9}
+    .feature h3{margin:0 0 6px;font-size:18px}
+    .feature p{margin:0 0 10px;color:var(--muted);font-size:14px}
+    .small{font-size:12px;color:var(--muted);margin-top:8px}
+
+    .footer{
+      margin-top:18px;color:var(--muted);
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      font-size:14px;padding-top:14px;border-top:1px solid var(--border);
+    }
+    .footer a{text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+    .anchor{scroll-margin-top:20px}
+
+.hero{
+  position: relative;
+  height: 420px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.hero-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px;
+  background: linear-gradient(
+    to right,
+    rgba(40,45,35,0.55),
+    rgba(40,45,35,0.35),
+    rgba(40,45,35,0.0)
+  );
+}
+
+.hero-overlay h1{
+  font-size: 46px;
+  margin: 0 0 10px;
+  color: #f6f5ec;
+  text-shadow: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+.hero-overlay p{
+  font-size: 18px;
+  max-width: 520px;
+  color: #e6e4d8;
+  text-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+.hero-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: fit-content;
+  background: #e7c15a;
+  color: #2f332b;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <!-- Optional: add a farm logo beside this HTML named farm-logo.jpg -->
+      <img src="farm-logo.png" alt="Meadowlark Rise Farm logo" onerror="this.style.display='none';" />
+      <div class="name">
+        <strong>Meadowlark Rise Farm</strong>
+        <span>Family-run regenerative farm & nursery, Vankleek Hill (Zone 5a/4b)</span>
+      </div>
+    </a>
+
+    <nav class="nav" aria-label="Site navigation">
+      <a href="#offerings">Offerings</a>
+      <a href="#seasonal">Seasonal</a>
+      <a href="#consulting">Consulting</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+  <img src="hero.png" alt="Meadowlark Rise Farm orchard" class="hero-image">
+  <div class="hero-overlay">
+    <h1>Meadowlark Rise Farm</h1>
+    <p>Regenerative farming, cold-hardy trees, and good food.</p>
+    <a href="https://www.instagram.com/meadowlark.rise.farm/" class="hero-btn" target="_blank">
+      DM to order
+    </a>
+  </div>
+</section>
+
+
+      <div class="small">Ordering is currently by Instagram DM. We’ll reply with availability, pricing, and pickup details.</div>
+    </section>
+
+    <section id="offerings" class="grid anchor">
+      <div class="card">
+        <h2>What we offer</h2>
+        <p class="muted">Simple, seasonal, and rooted in long-term resilience.</p>
+
+        <div class="features">
+          <div class="feature">
+            <h3>Nursery stock (preorders)</h3>
+            <p>Cold-hardy nut trees and perennials, with preorder windows for spring planting.</p>
+            <div class="pillRow">
+              <div class="pill">bareroot + potted</div>
+              <div class="pill">pickup coordination</div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <h3>Produce (limited)</h3>
+            <p>Seasonal harvests when available, including pears and heartnuts.</p>
+            <div class="pillRow">
+              <div class="pill">first-come, first-served</div>
+              <div class="pill">local pickup</div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <h3>Consultation</h3>
+            <p>Farm and land design support, especially around tree crops, water management, and regenerative systems.</p>
+            <div class="pillRow">
+              <div class="pill">site walk</div>
+              <div class="pill">design notes</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="seasonal" class="grid anchor">
+      <div class="card two">
+        <h2>Seasonal right now</h2>
+        <p class="muted">
+          Pears and heartnuts may still be available in limited quantities. Message us to check what’s in the shed and what’s still on the trees.
+        </p>
+        <div class="ctaRow" style="margin-top:10px;">
+          <a class="btn primary" href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">DM availability</a>
+        </div>
+      </div>
+
+      <div class="card two">
+        <h2>Upcoming</h2>
+        <p class="muted">
+          Nursery preorder windows open seasonally. Follow us for preorder dates, varieties, and pickup instructions.
+        </p>
+        <div class="ctaRow" style="margin-top:10px;">
+          <a class="btn outlineGreen" href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="btn outlineGreen" href="https://www.facebook.com/MeadowlarkRise/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="consulting" class="grid anchor">
+      <div class="card">
+        <h2>Consulting</h2>
+        <p class="muted">
+          Need help planning a windbreak, orchard layout, swales, or a tree-crop system that actually thrives in Eastern Ontario?
+          We can support with a walk-the-land consult, practical recommendations, and next steps you can execute.
+        </p>
+        <div class="ctaRow" style="margin-top:12px;">
+          <a class="btn primary" href="mailto:info@meadowlarkrisefarm.ca?subject=Consultation%20inquiry%20-%20Meadowlark%20Rise%20Farm">Email about consulting</a>
+        </div>
+        <div class="small">If the email button doesn’t open on your device, copy: <strong>info@meadowlarkrisefarm.ca</strong></div>
+      </div>
+    </section>
+
+    <section id="contact" class="grid anchor">
+      <div class="card two">
+        <h2>Contact</h2>
+        <p class="muted">
+          Email: <a href="mailto:info@meadowlarkrisefarm.ca">info@meadowlarkrisefarm.ca</a><br/>
+          Instagram: <a href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">@meadowlark.rise.farm</a><br/>
+          Facebook: <a href="https://www.facebook.com/MeadowlarkRise/" target="_blank" rel="noopener noreferrer">Meadowlark Rise Farm</a>
+        </p>
+      </div>
+
+      <div class="card two">
+        <h2>Order by DM</h2>
+        <p class="muted">Send us a message with what you’re looking for, your town, and your preferred pickup timing.</p>
+        <div class="ctaRow" style="margin-top:10px;">
+          <a class="btn primary" href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">DM on Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="y"></span> Meadowlark Rise Farm</div>
+      <div><a href="#top">Back to top</a></div>
+    </footer>
+  </main>
+
+</div>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
