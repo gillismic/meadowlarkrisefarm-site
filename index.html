@@ -1,309 +1,668 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Meadowlark Rise Farm</title>
-  <meta name="description" content="Meadowlark Rise Farm is a family-run regenerative farm in Vankleek Hill, Ontario offering nursery stock preorders, pears & heartnuts, and on-farm consulting." />
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meadowlark Rise Farm — Regenerative Farm & Nursery, Vankleek Hill</title>
+  <meta name="description" content="Family-run regenerative farm and nursery in Vankleek Hill, Eastern Ontario. Cold-hardy nut trees, seasonal produce, and land consulting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
-:root{
-  --eco:#8fb36a;        /* sage ring */
-  --bg:#fbfbf5;         /* warm cream */
-  --bg2:#f1f4ea;        /* soft paper */
-  --card:#ffffff;
-  --text:#2f332b;       /* charcoal */
-  --muted:#6b6f63;      /* field gray */
-  --border:rgba(60,70,50,.18);
-  --shadow:0 14px 40px rgba(40,45,35,.12);
-  --link:#6f8f4b;       /* leaf green */
-  --pill:#eef3e6;
-  --radius:18px;
-}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;
-      background:linear-gradient(180deg, var(--bg), var(--bg2));
-      color:var(--text);
-      line-height:1.5;
+    :root {
+      --soil:     #2c1f14;
+      --bark:     #4a3728;
+      --moss:     #5a6e3f;
+      --sage:     #7d9460;
+      --straw:    #c9b47a;
+      --cream:    #f5f0e8;
+      --parchment:#ede4d0;
+      --sky:      #d6e4dc;
+      --offwhite: #faf7f2;
+      --rust:     #a0522d;
     }
-    a{color:var(--link)}
-    .wrap{max-width:980px;margin:0 auto;padding:26px 18px 60px}
 
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:10px 0 14px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;min-width:260px}
-    .brand img{width:54px;height:54px;border-radius:14px;border:1px solid var(--border);background:#fff;object-fit:cover;box-shadow:var(--shadow)}
-    .brand .name{display:flex;flex-direction:column;gap:2px}
-    .brand strong{font-size:16px;letter-spacing:.2px}
-    .brand span{font-size:13px;color:var(--muted)}
+    html { scroll-behavior: smooth; }
 
-    .nav{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
-    .nav a{text-decoration:none;color:var(--muted);padding:6px 8px;border-radius:10px}
-    .nav a:hover{color:var(--text);background:rgba(47,196,111,.12)}
-
-    .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:10px 14px;border-radius:14px;
-      border:1px solid var(--border);
-      text-decoration:none;
-      font-weight:700;
-      background:rgba(255,255,255,.75);
-      color:var(--text);
+    body {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      color: var(--soil);
+      background: var(--offwhite);
+      overflow-x: hidden;
     }
-    .btn:hover{background:#fff}
-    .btn.primary{background:rgba(47,196,111,.18);border-color:rgba(47,196,111,.60)}
-    .btn.primary:hover{background:rgba(47,196,111,.26)}
-    .btn.outlineGreen{border-color:rgba(47,196,111,.55);background:rgba(255,255,255,.75)}
-    .btn.outlineGreen:hover{background:rgba(47,196,111,.10)}
 
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:16px}
-    .card{
-      grid-column:span 12;
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:18px;
-      background:rgba(255,255,255,.96);
-      box-shadow:0 6px 18px rgba(0,0,0,.05);
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(44, 31, 20, 0.92);
+      backdrop-filter: blur(8px);
     }
-    .card h2{margin:0 0 10px;font-size:20px}
-    .muted{color:var(--muted);margin:0}
-
-    .two{grid-column:span 12}
-    @media(min-width:820px){ .two{grid-column:span 6} }
-
-    .pillRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .pill{border:1px solid var(--border);background:var(--pill);padding:8px 10px;border-radius:999px;font-size:14px;color:var(--muted)}
-
-    .features{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-top:12px}
-    .feature{
-      grid-column:span 12;
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:16px;
-      background:#fff;
-      position:relative;
-      overflow:hidden;
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--straw);
+      letter-spacing: 0.04em;
+      text-decoration: none;
     }
-    @media(min-width:820px){ .feature{grid-column:span 4} }
-    .feature::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--eco);opacity:.9}
-    .feature h3{margin:0 0 6px;font-size:18px}
-    .feature p{margin:0 0 10px;color:var(--muted);font-size:14px}
-    .small{font-size:12px;color:var(--muted);margin-top:8px}
-
-    .footer{
-      margin-top:18px;color:var(--muted);
-      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
-      font-size:14px;padding-top:14px;border-top:1px solid var(--border);
+    .nav-logo span { font-style: italic; color: var(--cream); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--parchment);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s;
     }
-    .footer a{text-decoration:none}
-    .footer a:hover{text-decoration:underline}
-    .anchor{scroll-margin-top:20px}
+    .nav-links a:hover { opacity: 1; color: var(--straw); }
 
-.hero{
-  position: relative;
-  height: 420px;
-  border-radius: 24px;
-  overflow: hidden;
-  margin-bottom: 24px;
-}
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--straw); transition: 0.3s; }
+    #nav-toggle { display: none; }
+    #nav-toggle:checked ~ .nav-links {
+      display: flex; flex-direction: column; position: absolute;
+      top: 100%; left: 0; right: 0;
+      background: var(--soil); padding: 1.5rem 2.5rem;
+      gap: 1.2rem;
+    }
 
-.hero-image{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; place-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--soil);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(22,13,6,0.52) 0%, rgba(22,13,6,0.68) 55%, rgba(22,13,6,0.9) 100%),
+        radial-gradient(ellipse 80% 60% at 60% 40%, rgba(90,110,63,0.15) 0%, transparent 70%),
+        url('hero.png') center 40% / cover no-repeat;
+    }
+    /* Decorative organic rings */
+    .hero-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(201,180,122,0.12);
+      animation: pulse-ring 8s ease-in-out infinite;
+    }
+    .hero-ring:nth-child(1) { width: 500px; height: 500px; top: 5%; right: -80px; animation-delay: 0s; }
+    .hero-ring:nth-child(2) { width: 320px; height: 320px; top: 15%; right: 30px; animation-delay: 2s; border-color: rgba(201,180,122,0.07); }
+    .hero-ring:nth-child(3) { width: 700px; height: 700px; bottom: -100px; left: -150px; animation-delay: 4s; border-color: rgba(90,110,63,0.1); }
+    @keyframes pulse-ring { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.04); opacity: 0.6; } }
 
-.hero-overlay{
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 48px;
-  background: linear-gradient(
-    to right,
-    rgba(40,45,35,0.55),
-    rgba(40,45,35,0.35),
-    rgba(40,45,35,0.0)
-  );
-}
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      animation: fade-up 1.2s ease both;
+    }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-.hero-overlay h1{
-  font-size: 46px;
-  margin: 0 0 10px;
-  color: #f6f5ec;
-  text-shadow: 0 6px 20px rgba(0,0,0,0.35);
-}
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--straw);
+      margin-bottom: 1.4rem;
+      opacity: 0;
+      animation: fade-up 1s 0.3s ease both;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 0.2em;
+      opacity: 0;
+      animation: fade-up 1s 0.5s ease both;
+    }
+    .hero h1 em { font-style: italic; color: var(--straw); }
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(245,240,232,0.65);
+      margin: 1.2rem 0 2.5rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      animation: fade-up 1s 0.7s ease both;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0;
+      animation: fade-up 1s 0.9s ease both;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--moss);
+      color: var(--cream);
+      border: 1px solid var(--moss);
+    }
+    .btn-primary:hover { background: var(--sage); border-color: var(--sage); }
+    .btn-outline {
+      background: transparent;
+      color: var(--straw);
+      border: 1px solid rgba(201,180,122,0.5);
+    }
+    .btn-outline:hover { background: rgba(201,180,122,0.1); border-color: var(--straw); }
 
-.hero-overlay p{
-  font-size: 18px;
-  max-width: 520px;
-  color: #e6e4d8;
-  text-shadow: 0 4px 14px rgba(0,0,0,0.25);
-}
-.hero-btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  max-width: fit-content;
-  background: #e7c15a;
-  color: #2f332b;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 600;
-  text-decoration: none;
-  border: none;
-  transition: background 0.25s ease, transform 0.2s ease;
-}
+    .scroll-hint {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      opacity: 0; animation: fade-up 1s 1.4s ease both;
+    }
+    .scroll-hint span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,180,122,0.5); }
+    .scroll-arrow { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(201,180,122,0.5), transparent); animation: scroll-drop 2s 2s ease infinite; }
+    @keyframes scroll-drop { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform: scaleY(1); transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--soil);
+      margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--moss); }
+    .divider {
+      width: 48px; height: 2px;
+      background: var(--straw);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── INTRO BAND ── */
+    .intro-band {
+      background: var(--parchment);
+      border-top: 3px solid var(--straw);
+      border-bottom: 3px solid var(--straw);
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+    .intro-band p {
+      max-width: 640px; margin: 0 auto;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--bark);
+    }
+    .intro-band strong { font-weight: 700; color: var(--soil); }
+
+    /* ── OFFERINGS ── */
+    #offerings { background: var(--offwhite); }
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      margin-top: 3rem;
+      border: 2px solid var(--parchment);
+    }
+    .offering-card {
+      background: var(--cream);
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .offering-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--moss);
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform 0.35s ease;
+    }
+    .offering-card:hover { background: #f0ebe0; }
+    .offering-card:hover::before { transform: scaleY(1); }
+    .offering-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .offering-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: var(--soil);
+    }
+    .offering-card p {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: var(--bark);
+      margin-bottom: 1.5rem;
+    }
+    .tag-list { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--moss);
+      background: rgba(90,110,63,0.1);
+      padding: 0.3rem 0.7rem;
+      border-radius: 1px;
+    }
+
+    /* ── SEASONAL ── */
+    #seasonal {
+      background: var(--soil);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    #seasonal::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 80% 50%, rgba(90,110,63,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #seasonal .section-title { color: var(--cream); }
+    #seasonal .section-title em { color: var(--straw); }
+    #seasonal .section-label { color: var(--straw); }
+    #seasonal .divider { background: var(--sage); }
+    .seasonal-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .seasonal-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(245,240,232,0.75);
+      margin-bottom: 2rem;
+    }
+    .seasonal-items { list-style: none; }
+    .seasonal-items li {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(201,180,122,0.15);
+      font-size: 0.95rem;
+      color: var(--parchment);
+    }
+    .seasonal-items li::before {
+      content: '✦';
+      color: var(--straw);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+    .seasonal-note {
+      margin-top: 2rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,180,122,0.2);
+      border-radius: 2px;
+      padding: 1.5rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: rgba(245,240,232,0.6);
+      font-style: italic;
+    }
+
+    /* ── CONSULTING ── */
+    #consulting { background: var(--sky); }
+    .consulting-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .consulting-right { padding-top: 1rem; }
+    .consulting-right p {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--bark);
+      margin-bottom: 1.5rem;
+    }
+    .service-list { list-style: none; margin-bottom: 2rem; }
+    .service-list li {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      padding: 0.6rem 0;
+      font-size: 0.92rem;
+      color: var(--soil);
+      border-bottom: 1px solid rgba(44,31,20,0.08);
+    }
+    .service-list li::before { content: '→'; color: var(--moss); font-size: 0.8rem; margin-top: 0.1rem; flex-shrink: 0; }
+
+    /* ── UPCOMING ── */
+    #upcoming {
+      background: var(--parchment);
+      text-align: center;
+    }
+    .upcoming-inner { max-width: 640px; margin: 0 auto; }
+    .upcoming-inner p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--bark);
+      margin-bottom: 2rem;
+    }
+    .social-row {
+      display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--soil); color: var(--cream); text-align: center; }
+    #contact .section-title { color: var(--cream); }
+    #contact .section-label { color: var(--straw); }
+    #contact .divider { background: var(--sage); margin: 0 auto 2.5rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .contact-item h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--straw);
+      margin-bottom: 0.6rem;
+    }
+    .contact-item a, .contact-item p {
+      color: rgba(245,240,232,0.75);
+      text-decoration: none;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      transition: color 0.2s;
+    }
+    .contact-item a:hover { color: var(--straw); }
+    .order-box {
+      margin: 4rem auto 0;
+      max-width: 520px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,180,122,0.25);
+      border-radius: 2px;
+      padding: 2.5rem;
+    }
+    .order-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--straw);
+      margin-bottom: 0.8rem;
+    }
+    .order-box p {
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.6);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #160d06;
+      color: rgba(201,180,122,0.4);
+      text-align: center;
+      padding: 1.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+    }
+    footer a { color: rgba(201,180,122,0.5); text-decoration: none; }
+    footer a:hover { color: var(--straw); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.4rem; }
+      .hamburger { display: flex; }
+      .nav-links { display: none; }
+
+      .seasonal-inner,
+      .consulting-layout { grid-template-columns: 1fr; gap: 2rem; }
+
+      section { padding: 4rem 1.2rem; }
+    }
+
+    /* Fade-in on scroll (simple) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
   </style>
 </head>
-
 <body>
-<div class="wrap">
 
-  <header class="topbar">
-    <a class="brand" href="#top">
-      <!-- Optional: add a farm logo beside this HTML named farm-logo.jpg -->
-      <img src="farm-logo.png" alt="Meadowlark Rise Farm logo" onerror="this.style.display='none';" />
-      <div class="name">
-        <strong>Meadowlark Rise Farm</strong>
-        <span>Family-run regenerative farm & nursery, Vankleek Hill (Zone 5a/4b)</span>
-      </div>
-    </a>
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo">Meadowlark <span>Rise Farm</span></a>
+  <input type="checkbox" id="nav-toggle" />
+  <label for="nav-toggle" class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </label>
+  <ul class="nav-links">
+    <li><a href="#offerings">Offerings</a></li>
+    <li><a href="#seasonal">Seasonal</a></li>
+    <li><a href="#consulting">Consulting</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <nav class="nav" aria-label="Site navigation">
-      <a href="#offerings">Offerings</a>
-      <a href="#seasonal">Seasonal</a>
-      <a href="#consulting">Consulting</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
 
-  <main id="top">
-    <section class="hero">
-  <img src="hero.png" alt="Meadowlark Rise Farm orchard" class="hero-image">
-  <div class="hero-overlay">
-    <h1>Meadowlark Rise Farm</h1>
-    <p>Regenerative farming, cold-hardy trees, and good food.</p>
-    <a href="https://www.instagram.com/meadowlark.rise.farm/" class="hero-btn" target="_blank">
-      DM to order
-    </a>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Vankleek Hill · Eastern Ontario · Zone 5a/4b</p>
+    <h1>Meadowlark<br><em>Rise Farm</em></h1>
+    <p class="hero-tagline">Regenerative farming, cold-hardy trees, and good food.</p>
+    <div class="hero-ctas">
+      <a href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener" class="btn btn-primary">DM to Order</a>
+      <a href="#offerings" class="btn btn-outline">See What We Offer</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
   </div>
 </section>
 
-
-      <div class="small">Ordering is currently by Instagram DM. We’ll reply with availability, pricing, and pickup details.</div>
-    </section>
-
-    <section id="offerings" class="grid anchor">
-      <div class="card">
-        <h2>What we offer</h2>
-        <p class="muted">Simple, seasonal, and rooted in long-term resilience.</p>
-
-        <div class="features">
-          <div class="feature">
-            <h3>Nursery stock (preorders)</h3>
-            <p>Cold-hardy nut trees and perennials, with preorder windows for spring planting.</p>
-            <div class="pillRow">
-              <div class="pill">bareroot + potted</div>
-              <div class="pill">pickup coordination</div>
-            </div>
-          </div>
-
-          <div class="feature">
-            <h3>Produce (limited)</h3>
-            <p>Seasonal harvests when available, including pears and heartnuts.</p>
-            <div class="pillRow">
-              <div class="pill">first-come, first-served</div>
-              <div class="pill">local pickup</div>
-            </div>
-          </div>
-
-          <div class="feature">
-            <h3>Consultation</h3>
-            <p>Farm and land design support, especially around tree crops, water management, and regenerative systems.</p>
-            <div class="pillRow">
-              <div class="pill">site walk</div>
-              <div class="pill">design notes</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="seasonal" class="grid anchor">
-      <div class="card two">
-        <h2>Seasonal right now</h2>
-        <p class="muted">
-          Pears and heartnuts may still be available in limited quantities. Message us to check what’s in the shed and what’s still on the trees.
-        </p>
-        <div class="ctaRow" style="margin-top:10px;">
-          <a class="btn primary" href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">DM availability</a>
-        </div>
-      </div>
-
-      <div class="card two">
-        <h2>Upcoming</h2>
-        <p class="muted">
-          Nursery preorder windows open seasonally. Follow us for preorder dates, varieties, and pickup instructions.
-        </p>
-        <div class="ctaRow" style="margin-top:10px;">
-          <a class="btn outlineGreen" href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a class="btn outlineGreen" href="https://www.facebook.com/MeadowlarkRise/" target="_blank" rel="noopener noreferrer">Facebook</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="consulting" class="grid anchor">
-      <div class="card">
-        <h2>Consulting</h2>
-        <p class="muted">
-          Need help planning a windbreak, orchard layout, swales, or a tree-crop system that actually thrives in Eastern Ontario?
-          We can support with a walk-the-land consult, practical recommendations, and next steps you can execute.
-        </p>
-        <div class="ctaRow" style="margin-top:12px;">
-          <a class="btn primary" href="mailto:info@meadowlarkrisefarm.ca?subject=Consultation%20inquiry%20-%20Meadowlark%20Rise%20Farm">Email about consulting</a>
-        </div>
-        <div class="small">If the email button doesn’t open on your device, copy: <strong>info@meadowlarkrisefarm.ca</strong></div>
-      </div>
-    </section>
-
-    <section id="contact" class="grid anchor">
-      <div class="card two">
-        <h2>Contact</h2>
-        <p class="muted">
-          Email: <a href="mailto:info@meadowlarkrisefarm.ca">info@meadowlarkrisefarm.ca</a><br/>
-          Instagram: <a href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">@meadowlark.rise.farm</a><br/>
-          Facebook: <a href="https://www.facebook.com/MeadowlarkRise/" target="_blank" rel="noopener noreferrer">Meadowlark Rise Farm</a>
-        </p>
-      </div>
-
-      <div class="card two">
-        <h2>Order by DM</h2>
-        <p class="muted">Send us a message with what you’re looking for, your town, and your preferred pickup timing.</p>
-        <div class="ctaRow" style="margin-top:10px;">
-          <a class="btn primary" href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener noreferrer">DM on Instagram</a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>© <span id="y"></span> Meadowlark Rise Farm</div>
-      <div><a href="#top">Back to top</a></div>
-    </footer>
-  </main>
-
+<!-- INTRO BAND -->
+<div class="intro-band">
+  <p>A <strong>family-run farm and nursery</strong> rooted in long-term resilience — growing cold-hardy nut trees, seasonal produce, and the knowledge to help others do the same.</p>
 </div>
 
+<!-- OFFERINGS -->
+<section id="offerings">
+  <div class="container">
+    <span class="section-label reveal">What We Offer</span>
+    <h2 class="section-title reveal">Simple, seasonal, and rooted in<br><em>long-term resilience.</em></h2>
+    <div class="divider reveal"></div>
+
+    <div class="offerings-grid reveal">
+
+      <div class="offering-card">
+        <span class="offering-icon">🌱</span>
+        <h3>Nursery Stock</h3>
+        <p>Cold-hardy nut trees and perennials selected for Zone 5a/4b. Preorder windows open seasonally for spring planting — varieties worth growing for decades.</p>
+        <div class="tag-list">
+          <span class="tag">Bare-root</span>
+          <span class="tag">Potted</span>
+          <span class="tag">Preorder</span>
+          <span class="tag">Pickup</span>
+        </div>
+      </div>
+
+      <div class="offering-card">
+        <span class="offering-icon">🍐</span>
+        <h3>Seasonal Produce</h3>
+        <p>Harvests when they're ready — pears, heartnuts, and whatever else the land offers. First-come, first-served through local pickup.</p>
+        <div class="tag-list">
+          <span class="tag">Pears</span>
+          <span class="tag">Heartnuts</span>
+          <span class="tag">Local Pickup</span>
+        </div>
+      </div>
+
+      <div class="offering-card">
+        <span class="offering-icon">🗺️</span>
+        <h3>Farm Consulting</h3>
+        <p>Land design support for tree crops, water systems, and regenerative planning in Eastern Ontario's climate. Walk the land and build a real plan.</p>
+        <div class="tag-list">
+          <span class="tag">Site Walk</span>
+          <span class="tag">Design Notes</span>
+          <span class="tag">Orchard</span>
+          <span class="tag">Swales</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SEASONAL -->
+<section id="seasonal">
+  <div class="container">
+    <div class="seasonal-inner">
+      <div class="seasonal-text">
+        <span class="section-label reveal">Right Now</span>
+        <h2 class="section-title reveal">What's in the<br><em>shed & on the trees.</em></h2>
+        <div class="divider reveal"></div>
+        <p class="reveal">Availability changes with the season. Message us to check what's on hand — we'll reply with what's available, pricing, and pickup details.</p>
+        <a href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener" class="btn btn-outline reveal">DM Availability</a>
+      </div>
+      <div class="seasonal-right reveal">
+        <ul class="seasonal-items">
+          <li>Pears — limited quantities, check availability</li>
+          <li>Heartnuts — may still be available in shed</li>
+          <li>Nursery preorders — follow for seasonal windows</li>
+          <li>New varieties announced via Instagram & Facebook</li>
+        </ul>
+        <div class="seasonal-note">
+          Preorder windows for spring nursery stock open seasonally. Follow us to be first to know about available varieties and pickup dates.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTING -->
+<section id="consulting">
+  <div class="container">
+    <div class="consulting-layout">
+      <div>
+        <span class="section-label reveal">Land Design</span>
+        <h2 class="section-title reveal">Planning a system<br>that <em>actually thrives</em><br>in Eastern Ontario.</h2>
+        <div class="divider reveal"></div>
+      </div>
+      <div class="consulting-right reveal">
+        <p>Need help with windbreaks, orchard layout, swales, or a tree-crop system suited to your land and climate? We bring practical, on-the-ground experience with regenerative systems in Zone 5a/4b.</p>
+        <ul class="service-list">
+          <li>Windbreak and shelterbelts</li>
+          <li>Orchard layout and tree-crop systems</li>
+          <li>Water management and swale design</li>
+          <li>Cold-hardy variety selection</li>
+          <li>Walk-the-land consults with written notes</li>
+        </ul>
+        <a href="mailto:info@meadowlarkrisefarm.ca?subject=Consultation%20inquiry%20-%20Meadowlark%20Rise%20Farm" class="btn btn-primary">Email About Consulting</a>
+        <p style="margin-top:1rem; font-size:0.8rem; color: var(--bark);">Or write directly: <strong>info@meadowlarkrisefarm.ca</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPCOMING -->
+<section id="upcoming">
+  <div class="container">
+    <div class="upcoming-inner">
+      <span class="section-label reveal" style="display:block; text-align:center;">Stay Connected</span>
+      <h2 class="section-title reveal" style="text-align:center;">Follow for preorder<br>dates & <em>new varieties.</em></h2>
+      <div class="divider reveal" style="margin: 0 auto 2rem;"></div>
+      <p class="reveal">Nursery preorder windows open seasonally. We announce available varieties, pickup logistics, and farm updates through Instagram and Facebook.</p>
+      <div class="social-row reveal">
+        <a href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener" class="btn btn-primary">Instagram</a>
+        <a href="https://www.facebook.com/MeadowlarkRise/" target="_blank" rel="noopener" class="btn btn-outline">Facebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label reveal">Get in Touch</span>
+    <h2 class="section-title reveal">We'd love to<br><em>hear from you.</em></h2>
+    <div class="divider reveal"></div>
+
+    <div class="contact-grid reveal">
+      <div class="contact-item">
+        <h4>Email</h4>
+        <a href="mailto:info@meadowlarkrisefarm.ca">info@meadowlarkrisefarm.ca</a>
+      </div>
+      <div class="contact-item">
+        <h4>Instagram</h4>
+        <a href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener">@meadowlark.rise.farm</a>
+      </div>
+      <div class="contact-item">
+        <h4>Facebook</h4>
+        <a href="https://www.facebook.com/MeadowlarkRise/" target="_blank" rel="noopener">Meadowlark Rise Farm</a>
+      </div>
+      <div class="contact-item">
+        <h4>Location</h4>
+        <p>Vankleek Hill, Eastern Ontario</p>
+      </div>
+    </div>
+
+    <div class="order-box reveal">
+      <h3>Order by DM</h3>
+      <p>Send us a message with what you're looking for, your town, and your preferred pickup timing. We'll reply with availability, pricing, and next steps.</p>
+      <a href="https://www.instagram.com/meadowlark.rise.farm/" target="_blank" rel="noopener" class="btn btn-primary">DM on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© Meadowlark Rise Farm · Vankleek Hill, Ontario · <a href="mailto:info@meadowlarkrisefarm.ca">info@meadowlarkrisefarm.ca</a></p>
+</footer>
+
 <script>
-  document.getElementById("y").textContent = new Date().getFullYear();
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => { document.getElementById('nav-toggle').checked = false; });
+  });
 </script>
 </body>
 </html>
